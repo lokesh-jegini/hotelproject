@@ -1,44 +1,24 @@
+import React from "react";
 import "./App.scss";
-import React, { useState } from "react";
-
-function App() {
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
-  const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(data);
-  };
-
+import Home from "./home/Home";
+import About from "./about/About";
+import Dashboard from "./dashboard/Dashboard";
+import Page from "./page/Page";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./navbar/Navbar";
+export default function App() {
   return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <label for="email">email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="email"
-          required
-          onChange={handleChange}
-        />
-        <label for="password">password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="password"
-          required
-          onChange={handleChange}
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={<Page />} />
+        </Routes>
+      </BrowserRouter>
+      <BrowserRouter />
     </div>
   );
 }
-
-export default App;
