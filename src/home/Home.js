@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.scss";
 
 export default function Home() {
-  return <div>
-    <h1>Home</h1>
-  </div>;
+  const [count, setCount] = useState(0);
+  const incerement = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <button onClick={incerement}>clickhere${count}</button>
+    </div>
+  );
 }
