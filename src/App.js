@@ -6,6 +6,7 @@ import Dashboard from "./dashboard/Dashboard";
 import Page from "./page/Page";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
 export default function App() {
   return (
     <div>
