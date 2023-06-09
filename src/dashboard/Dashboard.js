@@ -1,14 +1,11 @@
 import React, { useState } from "react";
+import Hoc from "../hoc/Hoc";
 import "./Dashboard.scss";
-export default function Dashboard() {
-  const [count, setCount] = useState(0);
-  const incerement = () => {
-    setCount(count + 1);
-  };
-
+ function Dashboard(probs) {
   return (
     <div>
-      <p onMouseOver={incerement}>${count}</p>
+      <p onMouseOver={probs.incerement}>${probs.count}</p>
     </div>
   );
 }
+export default Hoc(Dashboard);

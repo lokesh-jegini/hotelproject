@@ -1,15 +1,12 @@
-import React, { useState } from "react";
 import "./Home.scss";
+import Hoc from "../hoc/Hoc";
 
-export default function Home() {
-  const [count, setCount] = useState(0);
-  const incerement = () => {
-    setCount(count + 1);
-  };
-
+function Home(probs) {
   return (
     <div>
-      <button onClick={incerement}>clickhere${count}</button>
+      <button onClick={probs.incerement}>clickhere${probs.count}</button>
     </div>
   );
 }
+// export default Home;
+export default Hoc(Home);
