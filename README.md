@@ -26,6 +26,7 @@ import Dashboard from "./dashboard/Dashboard";
 import { BrowserRouter , Router, Route } from "react-router-dom";
 export default function App() {
 return (
+
 <div>
 <Home />
 <Dashboard />
@@ -42,6 +43,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 export default function Navbar() {
 return (
+
 <div>
 <Link to="/">Home</Link>
 <Link to="/dashboard">Dashboard</Link>
@@ -49,3 +51,17 @@ return (
 </div>
 );
 }
+--------------------------pharams concept--------------
+
+url parametes(parametes are varibales)(sending data from one page to the another page by uing the ulr is call url parement component)
+by uing url parameter we send data in two ways 1)path parameter
+2)query parameters.
+  
+path patametes -->define variable in path --><Route path='/dashboard/ : name />
+<Link to='/dashboard/john' />
+note:in path params path should be match. (which we decalare in the path and to attribute)
+usePharams
+query parameters--> <Route path='/dashboard' />
+<Link to='/dashboard?name=johu /> (query parameter present with question mark on link tag)
+useLocation
+new UrlSearchPharams

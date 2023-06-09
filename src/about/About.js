@@ -1,13 +1,16 @@
-import React from 'react'
-import './About.scss'
-  import { useParams } from "react-router-dom";
-  
+import React from "react";
+import "./About.scss";
+import { useLocation } from "react-router-dom";
+
 export default function About() {
-   const data = useParams();
+  let { search } = useLocation();
+  let query = new URLSearchParams(search);
+  console.log(search);
   return (
     <div>
       <h1>about</h1>
-     <h3>{data.name}</h3>
+      <h1>Name:{query.get('name')}</h1>
+      <h1>Age:{query.get('age')}</h1>
     </div>
-  )
+  );
 }
