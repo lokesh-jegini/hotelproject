@@ -1,0 +1,36 @@
+------------------------------
+							 folder-structure
+							 project implement
+
+								step-1 https://youtu.be/dWPqtxGLgP4
+							1)pages --capletter first word
+							2)folder --all are small letter
+							3)component --capletter first letter
+							------------------------
+							step-2 (only 3 files should  be outside , remaing should be inside the folder)
+							1)App.js
+							2)Index.js
+							3)App.scss
+							 -------------------------------
+							 jsx syntax:-
+							 https://youtu.be/dWPqtxGLgP4
+							 1)for each component single div should present inside that only every thinf should br wrapped.(all html tags)
+							 2)id we write more Html tags return consist () 
+							 3)attribute names we give like cammel case
+							 4)if write js code inside retun we use curly bracess {}
+							 5)we write js code always inside curly bracesses
+							 
+							 ------------------
+							 import and export:-https://youtu.be/ctFCiCvGmu4
+							 1)named export {}
+                             2)default export 
+							 -------------------------------------------------------------
+							 https://youtu.be/PtoGCKMIHRQ
+							 1)style 1)-->inline style={{}} here we are passng in object format.
+							        2)-->seperate style sheet (import files)
+									3)-->frame works (install package and call class names)
+									4)-->style tag inside html page let style={heading:{
+									color:red,
+									font-size:12px,
+									background:yellow,
+									}}

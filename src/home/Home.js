@@ -1,116 +1,120 @@
 import "./Home.scss";
-import React, { useState, useEffect } from "react";
-import firebaseDB from "./Firebase.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
-function Home(probs) {
-  const [data, setData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-  });
-  const { firstname, lastname, email } = data;
-  const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-  const [getData, setGetData] = useState({});
-  const handleSubmit = async (e) => {
-    debugger;
-    e.preventDefault();
-    // axios
-    //   .post(
-    //     "https://register-6e570-default-rtdb.firebaseio.com/register.json",
-    //     data
-    //   )
-    //   .then((res) => {
-    //     alert("data added successfully");
-    //   });
-    var dataset = await firebaseDB.child("register").push(data, (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        alert("data added successfully");
-      }
-    });
-    setData({
-      firstname: "",
-      lastname: "",
-      email: "",
-    });
-  };
-  useEffect(() => {
-    debugger;
-    firebaseDB.child("register").on("value", (details) => {
-      if (details.val() != null) {
-        console.log(details.val());
-        setGetData(details.val());
-      }
-    });
-  }, []);
-  return (
-    <div className="Home">
-      <form onSubmit={handleSubmit}>
-        <div class="mb-3">
-          <label for="exampleFormControlInput" class="form-label">
-            first name
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput"
-            placeholder="first name"
-            name="firstname"
-            value={firstname}
-            onChange={handleChange}
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput2" class="form-label">
-            last name
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput2"
-            placeholder="last name"
-            name="lastname"
-            value={lastname}
-            onChange={handleChange}
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="name@example.com"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </div>
+import { table } from "table";
+var data = [
+  {
+    userId: 1,
+    id: 1,
+    title:
+      "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    body:
+      "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+  },
+  {
+    userId: 1,
+    id: 2,
+    title: "qui est esse",
+    body:
+      "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
+  },
+  {
+    userId: 1,
+    id: 3,
+    title: "ea molestias quasi exercitationem repellat qui ipsa sit aut",
+    body:
+      "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut",
+  },
+  {
+    userId: 1,
+    id: 4,
+    title: "eum et est occaecati",
+    body:
+      "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
+  },
+  {
+    userId: 1,
+    id: 5,
+    title: "nesciunt quas odio",
+    body:
+      "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque",
+  },
+  {
+    userId: 1,
+    id: 6,
+    title: "dolorem eum magni eos aperiam quia",
+    body:
+      "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae",
+  },
+  {
+    userId: 1,
+    id: 7,
+    title: "magnam facilis autem",
+    body:
+      "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas",
+  },
+  {
+    userId: 1,
+    id: 8,
+    title: "dolorem dolore est ipsam",
+    body:
+      "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae",
+  },
+  {
+    userId: 1,
+    id: 9,
+    title: "nesciunt iure omnis dolorem tempora et accusantium",
+    body:
+      "consectetur animi nesciunt iure dolore\nenim quia ad\nveniam autem ut quam aut nobis\net est aut quod aut provident voluptas autem voluptas",
+  },
+  {
+    userId: 1,
+    id: 10,
+    title: "optio molestias id quia eum",
+    body:
+      "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error",
+  },
+];
 
-        <button type="submit" class="btn btn-primary">
-          Submit
-        </button>
-      </form>
-      <div>
-        {getData &&
-          Object.keys(getData).map((id, index) => {
-            return <div className="border">
-              <p>FirstName:{getData[id].firstname}</p>
-              <p>LastNmae:{getData[id].lastname}</p>
-              <p>Email:{getData[id].email}</p>
-              <button className="btn btn-success">Update</button>
-              < button className="btn btn-danger">Delete</button>
-            </div>;
-          })}
+function Home(probs) {
+  return (
+    <div className="Home row">
+      {data.map((item) => {
+        let { userId, id, title, body } = item;
+        return (
+          <div className=".col-md-4 col-lg-2 card">
+            <img
+              src="https://iso.500px.com/wp-content/uploads/2016/03/stock-photo-142984111-1500x1000.jpg"
+              alt="img not found"
+            />
+            <p> userId:{userId}</p>
+            <p> id: {id}</p>
+            <p> title:{title}</p>
+            <p> body:{body}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function Profile(probs) {
+  // console.log(probs)
+  let { userId, id, title, body } = probs;
+  return (
+    <div className="profile">
+      <div className="row ">
+        <div className=".col-md-4 col-lg-2 card">
+          <img
+            src="https://iso.500px.com/wp-content/uploads/2016/03/stock-photo-142984111-1500x1000.jpg"
+            alt="img not found"
+          />
+          <p> userId:{userId}</p>
+          <p> id: {id}</p>
+          <p> title:{title}</p>
+          <p> body:{body}</p>
+        </div>
       </div>
     </div>
   );
 }
-// export default Home;
 export default Home;
