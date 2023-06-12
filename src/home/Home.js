@@ -3,18 +3,21 @@ import "./Home.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Home(props) {
-  let greeting;
-  const time = new Date().getHours();
-
-  if (time < 10) {
-    greeting = "Good morning";
-  } else if (time < 20) {
-    greeting = "Good day";
-  } else {
-    greeting = "Good evening";
+  let [counter, setCounter] = useState(0)
+  function increment() {
+      setCounter(++counter)
   }
 
-  return <div className="Home">{greeting}</div>;
+  return (
+    <>
+      <div className="home">
+        <p className="counter">
+          { counter}
+        </p>
+        <button className="btn btn-primary" onClick={increment}>Increment</button>
+      </div>
+    </>
+  );
 }
 
 export default Home;
