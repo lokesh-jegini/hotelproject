@@ -1,36 +1,61 @@
-------------------------------
-							 folder-structure
-							 project implement
+  Props& States
+  
+	        1)state strores values in object format (state act like varible) 
+			2)probs sending data from one componet to another component (compont act like function where we are calling in that place we send probs then where the function component present in that place we receive the probs)
+			3)tag and component both are inclued in angular braces <> but tag should be in small letter and component shoublne in cap letter
+	        4)note:in function component we should not use this key word
+			
+			1)https://youtu.be/mr75zNOGFP8 (probs vs state)
+            2)https://youtu.be/cK5gbGJjwPA (parent componet vs child componet) explain difference (app is parent ,user is child)
 
-								step-1 https://youtu.be/dWPqtxGLgP4
-							1)pages --capletter first word
-							2)folder --all are small letter
-							3)component --capletter first letter
-							------------------------
-							step-2 (only 3 files should  be outside , remaing should be inside the folder)
-							1)App.js
-							2)Index.js
-							3)App.scss
-							 -------------------------------
-							 jsx syntax:-
-							 https://youtu.be/dWPqtxGLgP4
-							 1)for each component single div should present inside that only every thinf should br wrapped.(all html tags)
-							 2)id we write more Html tags return consist () 
-							 3)attribute names we give like cammel case
-							 4)if write js code inside retun we use curly bracess {}
-							 5)we write js code always inside curly bracesses
-							 
-							 ------------------
-							 import and export:-https://youtu.be/ctFCiCvGmu4
-							 1)named export {}
-                             2)default export 
-							 -------------------------------------------------------------
-							 https://youtu.be/PtoGCKMIHRQ
-							 1)style 1)-->inline style={{}} here we are passng in object format.
-							        2)-->seperate style sheet (import files)
-									3)-->frame works (install package and call class names)
-									4)-->style tag inside html page let style={heading:{
-									color:red,
-									font-size:12px,
-									background:yellow,
-									}}
+
+probs-->probs are objects
+if we want data in key value pair we go for the object concept
+for acess loop of object we go for the array object concept [{}]
+|| -- if data is not available then use this 
+probs --destructure (before return we write js code) if we write js code inside retun we use curly braces
+debugger (for track variable values) (how we can active debugger by using devtools )for checking varible which value is holding
+here no event listiner are present
+if event lisiner present through devtools we active debugging mode.
+
+--------------------------------------------------------------------------------------------
+EVENTS:-
+------------------------------(follow cs world class)
+states:-when we upadte the variable on that time the componet want to rerender and display the updated result we go for the states concept.
+      states stores the variable in object format.
+	  for update state variable we use method concept
+	  
+	  state-for class component
+	  usestate for functional compomnet.
+	  usestate return array it consist two arugument (for for store variable and one for the set the variable ie=method)
+	  varibale value updated through the function but it is not reflect on the ui screen for remove this problem setmethid came.
+	  import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+export class Home extends Component {
+  state = {
+    product: 'iphone',
+    price: 20000,
+  }
+
+  render() {
+    const updatePrice = () => { 
+      let p = document.querySelector('.rate').value;
+      // this.setState({ price: p })
+      this.state.price = p
+      console.log(this.state)
+    }
+    return (
+      <div>
+        <div className="home">
+          <div className="product">{ this.state.product}</div>
+          <div className="home__price">{this.state.price}</div>
+          <input type="number" className='rate' />
+          <button onClick={updatePrice}>update</button>
+          </div>
+      </div>
+    )
+  }
+}
+
+export default Home
