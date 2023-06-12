@@ -1,29 +1,34 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from "react";
+import "./Home.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-export class Home extends Component {
-  state = {
-    product: 'iphone',
-    price: 20000,
-  }
-
-  render() {
-    const updatePrice = () => { 
-      let p = document.querySelector('.rate').value;
-      this.state.price = p
-       this.setState({ price: p })
-    }
-    return (
-      <div>
+function Home(props) {
+  // const [state, setState] = useState({
+  //   product: 'iphone',
+  //   price: 20000,
+  // });
+   const [product, setproduct] = useState("iphone");
+ const updatePrice = () => { 
+   let p = document.querySelector('.rate').value;
+   setproduct((prev) => {  
+      return prev+p;
+     
+    })};
+  return (
+    <>
+     <div>
         <div className="home">
-          <div className="product">{ this.state.product}</div>
-          <div className="home__price">{this.state.price}</div>
-          <input type="number" className='rate' />
-          <button onClick={updatePrice}>update</button>
+              <div className="product">produc name:{product}</div>
+          {/* <div className="product">produc name:{state.product}</div> */}
+          {/* <div className="home__price">produc price:{state.price}</div> */}
+          <input type="text" className='rate' />
+          <button onClick={() => {
+            updatePrice()
+          }}>update</button>
           </div>
       </div>
-    )
-  }
+    </>
+  );
 }
 
-export default Home
+export default Home;
